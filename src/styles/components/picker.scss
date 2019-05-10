@@ -94,6 +94,8 @@
 .mdrp-root {
   position: relative;
   display: inline-block;
+  width: 100%;
+  padding-right: 20px;
 }
 
 $prefix-class: mdrp__panel;

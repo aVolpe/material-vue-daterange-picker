@@ -2,7 +2,7 @@
   <div class="mdrp-root" v-clickoutside="clickOutside">
     <div class="mdrp__activator" @click="togglePicker">
       <slot name="input">
-        <default-activator ref="defaultActivator" :value="`${startText} - ${endText}`" readonly />
+        <default-activator ref="defaultActivator" :value="`${startText} - ${endText}`" readonly :title="locale.activatorTitle"/>
       </slot>
     </div>
     <transition name="slide-fade" mode="out-in">
@@ -139,12 +139,16 @@ export default {
       type: Boolean,
       default: true,
     },
+    activatorTitle: {
+      type: String,
+      default: true,
+    },
   },
   data () {
     const data = {
       locale: {
         direction: 'ltr',
-        format: moment.localeData().longDateFormat('L'),
+        format: 'DD-MM-YYYY',
         separator: ' - ',
         applyLabel: 'Apply',
         cancelLabel: 'Cancel',
@@ -153,6 +157,7 @@ export default {
         daysOfWeek: moment.weekdaysMin(),
         monthNames: moment.monthsShort(),
         firstDay: moment.localeData().firstDayOfWeek(),
+        activatorTitle: this.activatorTitle
       },
     };
     // TODO 这里的 props 究竟是放在 data 里面进行初始化好，还是放在生命周期中好呢？

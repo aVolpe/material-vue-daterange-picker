@@ -1,16 +1,12 @@
 <template>
-  <div class="activator-wrapper">
-    <input v-bind="$attrs" class="text-field" :class="inputClass" type="text" :value="value">
-    <span v-if="picker.showActivatorBar" class="bar"></span>
-    <label v-if="picker.showActivatorLabel">Select Date</label>
-  </div>
+    <v-text-field v-model="value" :label="title" readonly />
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
   inject: ['picker'],
-  props: ['value'],
+  props: ['value', 'title'],
   computed: {
     inputClass () {
       return {
